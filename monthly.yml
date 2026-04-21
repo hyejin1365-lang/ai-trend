@@ -1,0 +1,37 @@
+name: Monthly Insight
+
+on:
+  schedule:
+    # 매월 1일 한국시간 오전 9시 (UTC 00:00)
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monthly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Build monthly
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL_MONTHLY: ${{ vars.MODEL_MONTHLY || 'claude-sonnet-4-6' }}
+        run: python scripts/build_monthly.py
+
+      - name: Commit
+        run: |
+          git config user.name "trend-bot"
+          git config user.email "trend-bot@users.noreply.github.com"
+          git add data/monthly/
+          git diff --staged --quiet || git commit -m "data: monthly insight"
+          git push || true

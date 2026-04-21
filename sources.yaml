@@ -1,0 +1,247 @@
+# 크리에이티브 트렌드 RSS 수집 소스 설정
+#
+# priority: 1 (최우선, 항상 수집) ~ 3 (보조, 마이너 포함 옵션 켰을 때만)
+# category: image_video | design_tool | ai_platform | video_motion | audio | misc
+# emoji: 카드 제목 앞에 붙을 이모지
+# display_name: 카드에 표시될 출처명
+
+sources:
+
+  # ============================================================
+  # 1순위: AI 이미지·영상 생성
+  # ============================================================
+  - id: openai_news
+    display_name: OpenAI
+    url: https://openai.com/news/rss.xml
+    category: image_video
+    priority: 1
+    emoji: "🎬"
+    tags: [sora, dalle, openai]
+
+  - id: runway_research
+    display_name: Runway
+    url: https://runwayml.com/research/rss.xml
+    category: image_video
+    priority: 1
+    emoji: "🎞️"
+    tags: [runway, gen4, video]
+    fallback_scrape: https://runwayml.com/research
+
+  - id: stability_news
+    display_name: Stability AI
+    url: https://stability.ai/news?format=rss
+    category: image_video
+    priority: 1
+    emoji: "🖼️"
+    tags: [stable-diffusion, stability]
+
+  - id: luma_blog
+    display_name: Luma AI
+    url: https://lumalabs.ai/blog/rss.xml
+    category: image_video
+    priority: 1
+    emoji: "✨"
+    tags: [luma, dream-machine, ray]
+    fallback_scrape: https://lumalabs.ai/blog
+
+  - id: leonardo_updates
+    display_name: Leonardo.Ai
+    url: https://leonardo.ai/news/rss
+    category: image_video
+    priority: 2
+    emoji: "🎨"
+    tags: [leonardo]
+    fallback_scrape: https://leonardo.ai/news
+
+  - id: krea_changelog
+    display_name: Krea
+    url: https://www.krea.ai/blog/rss.xml
+    category: image_video
+    priority: 2
+    emoji: "🧩"
+    tags: [krea, realtime]
+    fallback_scrape: https://www.krea.ai/blog
+
+  - id: ideogram_blog
+    display_name: Ideogram
+    url: https://about.ideogram.ai/rss.xml
+    category: image_video
+    priority: 2
+    emoji: "🔤"
+    tags: [ideogram, typography]
+    fallback_scrape: https://about.ideogram.ai
+
+  - id: recraft_blog
+    display_name: Recraft
+    url: https://www.recraft.ai/blog/rss.xml
+    category: image_video
+    priority: 2
+    emoji: "✏️"
+    fallback_scrape: https://www.recraft.ai/blog
+
+  - id: pika_updates
+    display_name: Pika Labs
+    url: https://pika.art/blog/rss.xml
+    category: image_video
+    priority: 2
+    emoji: "🎥"
+    fallback_scrape: https://pika.art/blog
+
+  # ============================================================
+  # 2순위: 디자인 툴
+  # ============================================================
+  - id: figma_releases
+    display_name: Figma
+    url: https://www.figma.com/release-notes/feed.xml
+    category: design_tool
+    priority: 1
+    emoji: "🟣"
+    tags: [figma, design]
+    fallback_scrape: https://www.figma.com/release-notes/
+
+  - id: adobe_blog
+    display_name: Adobe
+    url: https://blog.adobe.com/en/rss.xml
+    category: design_tool
+    priority: 1
+    emoji: "🅰️"
+    tags: [photoshop, illustrator, premiere, firefly]
+
+  - id: canva_newsroom
+    display_name: Canva
+    url: https://www.canva.com/newsroom/news/rss/
+    category: design_tool
+    priority: 1
+    emoji: "🎒"
+    tags: [canva]
+    fallback_scrape: https://www.canva.com/newsroom/news/
+
+  - id: framer_updates
+    display_name: Framer
+    url: https://www.framer.com/updates/rss.xml
+    category: design_tool
+    priority: 2
+    emoji: "🟦"
+    fallback_scrape: https://www.framer.com/updates
+
+  - id: spline_changelog
+    display_name: Spline
+    url: https://spline.design/changelog/rss.xml
+    category: design_tool
+    priority: 2
+    emoji: "🟢"
+    tags: [3d, spline]
+    fallback_scrape: https://spline.design/changelog
+
+  # ============================================================
+  # 3순위: AI 모델·플랫폼
+  # ============================================================
+  - id: anthropic_news
+    display_name: Anthropic
+    url: https://www.anthropic.com/news/rss.xml
+    category: ai_platform
+    priority: 1
+    emoji: "🟣"
+    tags: [claude, anthropic]
+    fallback_scrape: https://www.anthropic.com/news
+
+  - id: google_ai_blog
+    display_name: Google AI
+    url: https://blog.google/technology/ai/rss/
+    category: ai_platform
+    priority: 1
+    emoji: "🔵"
+    tags: [gemini, veo, imagen, google]
+
+  - id: gemini_changelog
+    display_name: Gemini API
+    url: https://ai.google.dev/gemini-api/docs/changelog.xml
+    category: ai_platform
+    priority: 2
+    emoji: "🔷"
+    fallback_scrape: https://ai.google.dev/gemini-api/docs/changelog
+
+  - id: meta_ai_blog
+    display_name: Meta AI
+    url: https://ai.meta.com/blog/rss/
+    category: ai_platform
+    priority: 2
+    emoji: "🟦"
+    tags: [meta, llama, emu]
+
+  # ============================================================
+  # 4순위: 영상 편집·모션
+  # ============================================================
+  - id: blackmagic_news
+    display_name: DaVinci Resolve
+    url: https://www.blackmagicdesign.com/rss
+    category: video_motion
+    priority: 2
+    emoji: "⚫"
+    tags: [davinci, resolve]
+
+  - id: capcut_updates
+    display_name: CapCut
+    url: https://www.capcut.com/updates/rss.xml
+    category: video_motion
+    priority: 2
+    emoji: "✂️"
+    fallback_scrape: https://www.capcut.com/updates
+
+  - id: descript_blog
+    display_name: Descript
+    url: https://www.descript.com/blog/rss.xml
+    category: video_motion
+    priority: 2
+    emoji: "🎙️"
+    fallback_scrape: https://www.descript.com/blog
+
+  - id: elevenlabs_blog
+    display_name: ElevenLabs
+    url: https://elevenlabs.io/blog/rss.xml
+    category: audio
+    priority: 2
+    emoji: "🔊"
+    fallback_scrape: https://elevenlabs.io/blog
+
+  - id: suno_blog
+    display_name: Suno
+    url: https://suno.com/blog/rss.xml
+    category: audio
+    priority: 2
+    emoji: "🎵"
+    fallback_scrape: https://suno.com/blog
+
+# ============================================================
+# 카테고리 설정 (UI 필터에서 사용)
+# ============================================================
+categories:
+  image_video:
+    label: "AI 이미지·영상"
+    color: "#E85D75"
+  design_tool:
+    label: "디자인 툴"
+    color: "#6B5BFF"
+  ai_platform:
+    label: "AI 플랫폼"
+    color: "#00B894"
+  video_motion:
+    label: "영상·모션"
+    color: "#FDA769"
+  audio:
+    label: "오디오·음성"
+    color: "#4A9EFF"
+  misc:
+    label: "기타"
+    color: "#8899A6"
+
+# ============================================================
+# 분류 태그 (카드 우상단 뱃지)
+# ============================================================
+tag_labels:
+  model_release: "모델출시"
+  api_change: "API변경"
+  feature_add: "기능추가"
+  price_change: "가격변경"
+  tool_launch: "도구출시"
+  integration: "연동지원"
